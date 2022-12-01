@@ -1,7 +1,12 @@
 { pkgs ? import <nixpkgs> {} }:
-pkgs.mkShell {
-	# nativeBuildInputs is usually what you want -- tools you need to run
+let haskellWithDeps = pkgs.ghc.withPackages(pkgs: with pkgs; [
+	stylish-haskell
+	hindent
+	QuickCheck
+	split
+]);
+in pkgs.mkShell {
 	nativeBuildInputs = with pkgs; [
-		ghc
+		haskellWithDeps
 	];
 }
