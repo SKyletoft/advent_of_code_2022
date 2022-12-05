@@ -8,5 +8,7 @@ let haskellWithDeps = pkgs.ghc.withPackages(pkgs: with pkgs; [
 in pkgs.mkShell {
 	nativeBuildInputs = with pkgs; [
 		haskellWithDeps
+		gnumake
+		hyperfine
 	];
 }
