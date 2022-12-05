@@ -1,7 +1,6 @@
 import           Data.List       (transpose)
 import           Data.List.Split (splitOn)
 import           Data.Maybe      (isNothing)
-import           Debug.Trace     (traceShow, traceShowId)
 
 {-
 
@@ -10,6 +9,7 @@ ex <- readFile "example0"
 input <- readFile "input"
 
 -}
+
 main = interact run
 
 run = (++ "\n") . show . (\x -> (part1 x, part2 x)) . parse
@@ -52,11 +52,7 @@ part1' crates (repeat, from, to) =
 
 move from to crates = insert from oneShort . insert to oneLonger $ crates
   where
-    (moving:oneShort)
-      | null tower = error . show $ (crates, tower, from)
-      | otherwise = tower
-      where
-        tower = crates !! from
+    (moving:oneShort) = crates !! from
     oneLonger = moving : (crates !! to)
 
 insert :: Int -> a -> [a] -> [a]
