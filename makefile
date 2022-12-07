@@ -1,4 +1,4 @@
-all: day_1 day_2 day_3 day_4 day_5 day_6
+all: day_1 day_2 day_3 day_4 day_5 day_6 day_7
 
 day_1: dec_1/main.hs
 	ghc -O dec_1/main.hs -o day_1
@@ -18,6 +18,9 @@ day_5: dec_5/main.hs
 day_6: dec_6/main.hs
 	ghc -O dec_6/main.hs -o day_6
 
+day_7: dec_7/main.hs
+	ghc -O dec_7/main.hs -o day_7
+
 bench:
 	./day_1 < dec_1/input
 	./day_2 < dec_2/input
@@ -25,6 +28,7 @@ bench:
 	./day_4 < dec_4/input
 	./day_5 < dec_5/input
 	./day_6 < dec_6/input
+	./day_7 < dec_7/input
 
 clean:
 	-rm **/**.hi
