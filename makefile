@@ -21,14 +21,15 @@ day_6: dec_6/main.hs
 day_7: dec_7/main.hs
 	ghc -O dec_7/main.hs -o day_7
 
-bench:
-	./day_1 < dec_1/input
-	./day_2 < dec_2/input
-	./day_3 < dec_3/input
-	./day_4 < dec_4/input
-	./day_5 < dec_5/input
-	./day_6 < dec_6/input
-	./day_7 < dec_7/input
+bench: all
+	hyperfine -w20 "\
+		./day_1 < dec_1/input &&\
+		./day_2 < dec_2/input &&\
+		./day_3 < dec_3/input &&\
+		./day_4 < dec_4/input &&\
+		./day_5 < dec_5/input &&\
+		./day_6 < dec_6/input &&\
+		./day_7 < dec_7/input"
 
 clean:
 	-rm **/**.hi
