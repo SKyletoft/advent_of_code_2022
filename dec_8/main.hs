@@ -35,20 +35,21 @@ part1 input =
         (top, bottom) = splitAround y (input !! x)
         surroundings = [left, right, top, bottom]
 
-pairs xs = zip xs ((-1):xs)
+takeWhileInclusive :: (a -> Bool) -> [a] -> [a]
+takeWhileInclusive _ [] = []
+takeWhileInclusive f (x:xs)
+  | f x = x : takeWhileInclusive f xs
+  | otherwise = [x]
 
 part2 :: [[Int]] -> Int
-part2 input =
-  maximum . concat . traceShowId
-  $ [[singleStep x y | x <- range] | y <- range]
+part2 input = maximum . concat $ [[singleStep x y | x <- range] | y <- range]
   where
     input' = transpose input
-    range = [0 .. (length input - 1)]
-    singleStep x y =
-      product . traceShowId . map (length . takeWhile (uncurry (<=)) . pairs)
-      $ surroundings
+    range = [1 .. (length input - 2)]
+    singleStep x y = product . map takingFunction $ surroundings
       where
         height = input !! x !! y
         (left, right) = splitAround x (input' !! y)
         (top, bottom) = splitAround y (input !! x)
-        surroundings = traceShowId [reverse left, right, reverse top, bottom]
+        surroundings = [reverse left, right, reverse top, bottom]
+        takingFunction = length . takeWhileInclusive (< height)
