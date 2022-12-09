@@ -3,6 +3,7 @@ let haskellWithDeps = pkgs.ghc.withPackages(pkgs: with pkgs; [
 	stylish-haskell
 	hindent
 	QuickCheck
+	haskell-language-server
 	split
 ]);
 in pkgs.mkShell {
