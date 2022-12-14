@@ -1,7 +1,7 @@
 import qualified Data.Set as Set
 import Data.List.Split
 import Data.List
-import Debug.Trace (traceShowId)
+import Debug.Trace (trace, traceShowId)
 
 type Coord = (Int, Int)
 type S = Set.Set
@@ -12,7 +12,7 @@ run :: String -> String
 run
   = (++ "\n")
   . show
-  . part2
+  . (\x -> (part1 x, part2 x))
   . foldr1 Set.union
   . map lineToPoints
   . lines
@@ -74,10 +74,12 @@ part1 walls
     void = maximum . map snd . Set.toList $ walls
 
 part2 :: S Coord -> Int
-part2 
+part2 walls
   = length
   . takeWhile (not . Set.member (500, 0))
-  . iterate (dropSand 100)
+  . iterate (dropSand (void + 5))
   . Set.union floor
+  $ walls
   where
-    floor = Set.fromList $ line ((470, 11), (530, 11))
+    void = maximum . map snd . Set.toList $ walls
+    floor = Set.fromList $ line ((0, void + 2), (1000, void + 2))
