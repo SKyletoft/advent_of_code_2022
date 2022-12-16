@@ -1,10 +1,10 @@
-import qualified Data.Set as Set
+import qualified Data.HashSet as Set
 import Data.List.Split
 import Data.List
 import Debug.Trace (trace, traceShowId)
 
 type Coord = (Int, Int)
-type S = Set.Set
+type S = Set.HashSet
 
 main = interact run
 
@@ -48,10 +48,10 @@ fall void (x, y) walls
   | y >= void = walls 
   | (x, y) `Set.member` walls = walls
   | otherwise = case (down', left', right') of
-    (False, _, _) -> fall void down walls
-    (_, False, _) -> fall void left walls
-    (_, _, False) -> fall void right walls
-    _ -> Set.insert (x, y) walls
+      (False, _, _) -> fall void down walls
+      (_, False, _) -> fall void left walls
+      (_, _, False) -> fall void right walls
+      _             -> Set.insert (x, y) walls
     where
       down = (x, y+1)
       left = (x-1, y+1)
