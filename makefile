@@ -1,4 +1,4 @@
-all: day_1 day_2 day_3 day_4 day_5 day_6 day_7 day_8 day_9 day_10 day_11
+all: day_1 day_2 day_3 day_4 day_5 day_6 day_7 day_8 day_9 day_10 day_11 day_12 day_13 day_14 day_15
 
 day_1: dec_1/main.hs
 	ghc -O dec_1/main.hs -o day_1
@@ -27,11 +27,23 @@ day_8: dec_8/main.hs
 day_9: dec_9/main.hs
 	ghc -O dec_9/main.hs -o day_9
 
-day_8: dec_10/main.hs
+day_10: dec_10/main.hs
 	ghc -O dec_10/main.hs -o day_10
 
-day_8: dec_11/main.hs
+day_11: dec_11/main.hs
 	ghc -O dec_11/main.hs -o day_11
+
+day_12: dec_12/main.hs
+	ghc -O dec_12/main.hs -o day_12
+
+day_13: dec_13/main.hs
+	ghc -O dec_13/main.hs -o day_13
+
+day_14: dec_14/main.hs
+	ghc -O dec_14/main.hs -o day_14
+
+day_15: dec_15/main.hs
+	ghc -O dec_15/main.hs -o day_15
 
 bench: all
 	hyperfine -w20 "\
