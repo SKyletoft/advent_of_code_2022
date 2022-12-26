@@ -5,6 +5,9 @@ let haskellWithDeps = pkgs.ghc.withPackages(pkgs: with pkgs; [
 	QuickCheck
 	haskell-language-server
 	split
+	hashmap
+	memoize
+	heap
 ]);
 in pkgs.mkShell {
 	nativeBuildInputs = with pkgs; [
