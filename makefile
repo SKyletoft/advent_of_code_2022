@@ -1,4 +1,4 @@
-all: day_1 day_2 day_3 day_4 day_5 day_6 day_7 day_8 day_9 day_10 day_11 day_12 day_13 day_14 day_15
+all: day_1 day_2 day_3 day_4 day_5 day_6 day_7 day_8 day_9 day_10 day_11 day_13 day_14 day_15 day_18 day_21 day_23 day_25
 
 day_1: dec_1/main.hs
 	ghc -O $^ -o $@
@@ -87,7 +87,34 @@ bench: all
 		./day_8  <  dec_8/input &&\
 		./day_9  <  dec_9/input &&\
 		./day_10 < dec_10/input &&\
-		./day_11 < dec_11/input"
+		./day_11 < dec_11/input &&\
+		./day_13 < dec_13/input &&\
+		./day_14 < dec_14/input &&\
+		./day_15 < dec_15/input &&\
+		./day_18 < dec_18/input &&\
+		./day_21 < dec_21/input &&\
+		./day_23 < dec_23/input &&\
+		./day_25 < dec_25/input"
+
+run_all: all
+	./day_1  <  dec_1/input
+	./day_2  <  dec_2/input
+	./day_3  <  dec_3/input
+	./day_4  <  dec_4/input
+	./day_5  <  dec_5/input
+	./day_6  <  dec_6/input
+	./day_7  <  dec_7/input
+	./day_8  <  dec_8/input
+	./day_9  <  dec_9/input
+	./day_10 < dec_10/input
+	./day_11 < dec_11/input
+	./day_13 < dec_13/input
+	./day_14 < dec_14/input
+	./day_15 < dec_15/input
+	./day_18 < dec_18/input
+	./day_21 < dec_21/input
+	./day_23 < dec_23/input
+	./day_25 < dec_25/input
 
 clean:
 	-rm **/**.hi

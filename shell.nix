@@ -5,7 +5,7 @@ let haskellWithDeps = pkgs.ghc.withPackages(pkgs: with pkgs; [
 	QuickCheck
 	haskell-language-server
 	split
-	hashmap
+	# hashmap
 	memoize
 	heap
 ]);
